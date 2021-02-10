@@ -32,13 +32,13 @@ export class MusicPlayer extends React.Component {
 			let url = this.state.datos[posicion].url;
 			this.player.src = "https://assets.breatheco.de/apis/sound/" + url;
 			this.player.play();
-			this.setState({ url: url, posicion: posicion });
+			this.setState({ url: url, posicion: posicion, play: true });
 		} else {
 			let posicion = this.state.datos.length - 1;
 			let url = this.state.datos[posicion].url;
 			this.player.src = "https://assets.breatheco.de/apis/sound/" + url;
 			this.player.play();
-			this.setState({ url: url, posicion: posicion });
+			this.setState({ url: url, posicion: posicion, play: true });
 		}
 	}
 
@@ -57,14 +57,20 @@ export class MusicPlayer extends React.Component {
 			let url = this.state.datos[posicion].url;
 			this.player.src = "https://assets.breatheco.de/apis/sound/" + url;
 			this.player.play();
-			this.setState({ url: url, posicion: posicion });
+			this.setState({ url: url, posicion: posicion, play: true });
 		} else {
 			let posicion = 0;
 			let url = this.state.datos[posicion].url;
 			this.player.src = "https://assets.breatheco.de/apis/sound/" + url;
 			this.player.play();
-			this.setState({ url: url, posicion: posicion });
+			this.setState({ url: url, posicion: posicion, play: true });
 		}
+	}
+	CambiarSimbolo() {
+		let simbolo = this.state.play
+			? "fas fa-pause-circle fa-2x"
+			: "fas fa-play-circle fa-2x";
+		return simbolo;
 	}
 
 	render() {
@@ -91,7 +97,7 @@ export class MusicPlayer extends React.Component {
 					</div>
 					<div>
 						<i
-							className="fas fa-play-circle fa-2x"
+							className={this.CambiarSimbolo()}
 							onClick={() => this.PausePlay()}></i>
 					</div>
 					<div>
